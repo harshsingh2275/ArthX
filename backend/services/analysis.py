@@ -47,28 +47,12 @@ def _persist_anomaly(db: Session, result: AnomalyResult) -> Anomaly:
     return record
 
 
-def _update_transaction_status(
-    db: Session,
-    result: AnomalyResult,
-) -> None:
-    """
-    Mark a transaction as 'flagged' if risk_score >= FLAG_THRESHOLD,
-    and 'normal' otherwise (resets stale flags on re-run).
-    """
-    tx = db.query(Transaction).filter(Transaction.id == result.transaction_id).first()
-    if tx is None:
-        return
-    if result.risk_score >= FLAG_THRESHOLD:
-        tx.status = TransactionStatus.FLAGGED
-    # We do not downgrade here — only set flagged in this function
-
-
 def _reset_all_transaction_statuses(db: Session) -> None:
     """
     Reset all transaction statuses to 'normal' before a fresh detection run,
     so stale flags from previous runs don't persist when the data changes.
     """
-    db.query(Transaction).update({"status": TransactionStatus.NORMAL})
+    db.query(Transaction).update({"status": TransactionStatus.NORMAL}, synchronize_session=False)
     db.commit()
 
 
@@ -79,7 +63,7 @@ def run_analysis(db: Session) -> Dict[str, Any]:
       2. Reset all transaction statuses to normal
       3. Run detection engine against current DB state
       4. Persist each anomaly result
-      5. Flag transactions with risk_score >= FLAG_THRESHOLD
+      5. Flag transactions with risk_score >= FLAG_THRESHOLD in bulk
       6. Return summary dict for the API response
     """
     # Step 1: Clear stale anomaly records
@@ -91,13 +75,19 @@ def run_analysis(db: Session) -> Dict[str, Any]:
     # Step 3: Run detection (pure, no DB side effects)
     results: List[AnomalyResult] = run_detection(db)
 
-    # Steps 4 & 5: Persist and flag
-    flagged_count = 0
+    # Steps 4 & 5: Persist anomalies and bulk update flagged transaction statuses
+    flagged_ids = []
     for result in results:
         _persist_anomaly(db, result)
         if result.risk_score >= FLAG_THRESHOLD:
-            _update_transaction_status(db, result)
-            flagged_count += 1
+            flagged_ids.append(result.transaction_id)
+
+    flagged_count = len(flagged_ids)
+    if flagged_ids:
+        db.query(Transaction).filter(Transaction.id.in_(flagged_ids)).update(
+            {"status": TransactionStatus.FLAGGED},
+            synchronize_session=False,
+        )
 
     db.commit()
 

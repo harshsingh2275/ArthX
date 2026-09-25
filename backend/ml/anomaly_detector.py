@@ -48,7 +48,7 @@ at runtime from the actual transaction data in the database session provided.
 
 from dataclasses import dataclass, field
 from datetime import date, timedelta
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional, Tuple, Any, Union
 import statistics
 import math
 
@@ -290,42 +290,55 @@ OFF_SCHEDULE_RISK_SCORE: float = 0.65
 
 def _detect_scheduled_vendors(
     transactions: List[Transaction],
-) -> Dict[str, List[int]]:
+) -> Dict[Any, List[int]]:
     """
     Automatically detect vendors with tight payment schedules by computing
     the standard deviation of day-of-month across their transactions.
     Vendors with std < OFF_SCHEDULE_DAY_STD_THRESHOLD are considered scheduled.
-    Returns {vendor: [expected_day_1, expected_day_2, ...]} where expected days
+    Builds day histories separately by transaction type so inflows and outflows
+    are not combined.
+    Returns {(vendor, tx_type): [expected_day_1, expected_day_2, ...]} where expected days
     are the distinct days seen in normal (non-outlier) patterns.
     """
     from collections import Counter
-    vendor_days: Dict[str, List[int]] = {}
+    vendor_days: Dict[Tuple[str, str], List[int]] = {}
     for tx in transactions:
-        vendor_days.setdefault(tx.vendor, []).append(tx.date.day)
+        tx_type = tx.type.value if hasattr(tx.type, "value") else str(tx.type)
+        vendor_days.setdefault((tx.vendor, tx_type), []).append(tx.date.day)
 
-    scheduled: Dict[str, List[int]] = {}
-    for vendor, days in vendor_days.items():
+    scheduled: Dict[Any, List[int]] = {}
+    for (vendor, tx_type), days in vendor_days.items():
         if len(days) < 4:
             continue  # not enough history to call it scheduled
         std = statistics.pstdev(days)
         if std < OFF_SCHEDULE_DAY_STD_THRESHOLD:
-            # Expected days = the mode day(s) — up to 2 most common
+            # Expected days: from up to two most common days, include only days
+            # that occur more than once; if none do, retain single most-common day as fallback.
             counter = Counter(days)
-            most_common = [d for d, _ in counter.most_common(2)]
-            scheduled[vendor] = most_common
+            top2 = counter.most_common(2)
+            expected_days = [d for d, c in top2 if c > 1]
+            if not expected_days and top2:
+                expected_days = [top2[0][0]]
+            scheduled[(vendor, tx_type)] = expected_days
+            # Also store vendor-only key for backwards compatibility if not already set
+            if vendor not in scheduled:
+                scheduled[vendor] = expected_days
     return scheduled
 
 
 def _rule_off_schedule(
     tx: Transaction,
-    scheduled_vendors: Dict[str, List[int]],
+    scheduled_vendors: Dict[Any, List[int]],
 ) -> Optional[RuleHit]:
     """
     Flags a transaction from a scheduled vendor (tight day-of-month pattern)
     when the payment day is not in the expected day list.
     Works for both inflows and outflows.
     """
-    expected_days = scheduled_vendors.get(tx.vendor)
+    tx_type = tx.type.value if hasattr(tx.type, "value") else str(tx.type)
+    expected_days = scheduled_vendors.get((tx.vendor, tx_type))
+    if expected_days is None:
+        expected_days = scheduled_vendors.get(tx.vendor)
     if expected_days is None:
         return None
     tx_day = tx.date.day

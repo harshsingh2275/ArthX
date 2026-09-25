@@ -32,7 +32,14 @@ with open(MANIFEST_PATH) as f:
 
 injected_ids = set(manifest["anomalous_transaction_ids"])
 injected_records = {r["transaction_id"]: r for r in manifest["anomalous_transactions"]}
-total_transactions = 211
+# Dynamically obtain total transaction count from API or dataset
+tx_resp = requests.get(f"{BASE_URL}/api/transactions")
+if tx_resp.status_code == 200:
+    total_transactions = len(tx_resp.json())
+else:
+    transactions_path = Path(__file__).parent.parent / "data" / "transactions.json"
+    with open(transactions_path) as tf:
+        total_transactions = len(json.load(tf))
 
 print(f"\nManifest: {len(injected_ids)} deliberately injected anomaly transaction IDs")
 
