@@ -43,7 +43,8 @@ def health_check():
         "version": "0.1.0",
         "environment": settings.ENVIRONMENT,
         "database_configured": bool(settings.DATABASE_URL),
-        "gemini_api_key_configured": settings.has_gemini_key,
+        "groq_api_key_configured": settings.has_llm_key,
+        "llm_model": settings.LLM_MODEL_NAME,
         "explainability_mode": settings.EXPLAINABILITY_MODE,
         "allowed_cors_origins": settings.cors_origins_list,
     }
