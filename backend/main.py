@@ -27,11 +27,13 @@ from routes.data import router as data_router
 from routes.transactions import router as transactions_router
 from routes.invoices import router as invoices_router
 from routes.analysis import router as analysis_router
+from routes.forecast import router as forecast_router
 
 app.include_router(data_router)
 app.include_router(transactions_router)
 app.include_router(invoices_router)
 app.include_router(analysis_router)
+app.include_router(forecast_router)
 
 @app.get("/api/health")
 def health_check():
