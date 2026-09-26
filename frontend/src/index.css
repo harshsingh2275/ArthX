@@ -1,111 +1,105 @@
+/* ============================================================
+   ArthX — Global Design System
+   Neo-Brutalist Financial Intelligence Workspace
+   Token source: frontend/stitch-export/DESIGN.md
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+/* ── CSS Tokens ─────────────────────────────────────────────── */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Colors */
+  --nb-bg:      #F4F0EA;
+  --nb-card:    #FFFFFF;
+  --nb-black:   #000000;
+  --nb-yellow:  #FFE600;
+  --nb-pink:    #FF4365;
+  --nb-cyan:    #38BDF8;
+  --nb-green:   #00E599;
+  --nb-orange:  #FF7A00;
+  --nb-blue:    #0041C9;
+  --nb-gray:    #F5F5F0;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Shadows (hard, no blur) */
+  --shadow-sm:   2px 2px 0px #000000;
+  --shadow-md:   3px 3px 0px #000000;
+  --shadow-lg:   4px 4px 0px #000000;
+  --shadow-xl:   6px 6px 0px #000000;
+  --shadow-white: 2px 2px 0px #FFFFFF;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Typography */
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* Borders */
+  --border: 2px solid #000000;
+  --border-thick: 2.5px solid #000000;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* ── Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+html, body {
+  min-height: 100vh;
+  overscroll-behavior: none;
 }
 
 body {
-  margin: 0;
+  background-color: var(--nb-bg);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--nb-black);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #F4F0EA; border-left: 1px solid #000; }
+::-webkit-scrollbar-thumb { background: #000000; }
+
+/* ── Material Symbols ────────────────────────────────────────── */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
+/* ── Button base ─────────────────────────────────────────────── */
+button {
+  cursor: pointer;
+  border: var(--border);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  border-radius: 0;
+  outline: none;
+  transition: transform 60ms ease, box-shadow 60ms ease;
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
+button:hover  { transform: translate(-1px, -1px); }
+button:active { transform: translate(2px, 2px); }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
-}
+/* ── Risk badge classes ─────────────────────────────────────── */
+.badge-high   { background: #FF4365; color: #fff; }
+.badge-medium { background: #FFE600; color: #000; }
+.badge-low    { background: #00E599; color: #000; }
