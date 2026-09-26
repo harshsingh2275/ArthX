@@ -1,16 +1,19 @@
 /**
  * ArthX API Client — all backend endpoints
  */
-const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+const RAW_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+// Strip trailing slashes to prevent invalid double-slash paths (e.g. host//api/...)
+const API_BASE = RAW_BASE.replace(/\/+$/, '');
 
 async function request(path, options = {}) {
-  const res = await fetch(`${API_BASE}${path}`, {
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  const res = await fetch(`${API_BASE}${cleanPath}`, {
     headers: { 'Content-Type': 'application/json', ...options.headers },
     ...options,
   });
   if (!res.ok) {
     const text = await res.text().catch(() => '');
-    throw new Error(`[${res.status}] ${path}: ${text}`);
+    throw new Error(`[${res.status}] ${cleanPath}: ${text}`);
   }
   return res.json();
 }

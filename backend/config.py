@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     HOST: str = "127.0.0.1"
     PORT: int = 8000
     DATABASE_URL: str = f"sqlite:///{ROOT_DIR / 'data' / 'arthx.db'}"
-    CORS_ALLOWED_ORIGINS: str = "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173"
+    CORS_ALLOWED_ORIGINS: str = "*"
     # LLM provider — Groq (replaces Gemini)
     GROQ_API_KEY: str = ""
     LLM_MODEL_NAME: str = "openai/gpt-oss-120b"
@@ -19,6 +19,8 @@ class Settings(BaseSettings):
 
     @property
     def cors_origins_list(self) -> List[str]:
+        if not self.CORS_ALLOWED_ORIGINS or self.CORS_ALLOWED_ORIGINS.strip() == "*":
+            return ["*"]
         return [origin.strip() for origin in self.CORS_ALLOWED_ORIGINS.split(",") if origin.strip()]
 
     @property
