@@ -72,6 +72,7 @@ def validate_invoices_endpoint(
 
 
 @router.get("/issues", response_model=List[InvoiceIssueResponse])
+@router.get("/issues/", response_model=List[InvoiceIssueResponse], include_in_schema=False)
 def list_invoice_issues(
     issue_type: Optional[str] = Query(None, description="Filter by issue type: DUPLICATE_INVOICE or MISSING_PO_REFERENCE"),
     invoice_id: Optional[int] = Query(None, description="Filter by invoice ID"),

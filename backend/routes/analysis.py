@@ -7,10 +7,12 @@ Exposes:
   POST /api/analysis/explain   — Regenerate LLM explanations
 """
 
+from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from database import get_db
+from schemas.anomaly import AnomalyResponse
 from services.analysis import get_stored_anomalies
 from services.explanation import run_explanation_pipeline
 from services.orchestrator import run_orchestrated_pipeline
@@ -54,14 +56,29 @@ def run_analysis_endpoint(
         raise HTTPException(status_code=500, detail=f"Orchestration pipeline failed: {str(e)}")
 
 
-@router.get("/api/analysis/anomalies")
-@router.get("/api/anomalies")
-def list_anomalies(db: Session = Depends(get_db)):
+@router.get("/api/analysis/anomalies", response_model=List[AnomalyResponse])
+@router.get("/api/anomalies", response_model=List[AnomalyResponse])
+@router.get("/api/anomalies/", response_model=List[AnomalyResponse], include_in_schema=False)
+def list_anomalies(
+    min_risk: Optional[float] = Query(None, ge=0.0, le=1.0, description="Minimum risk score (0.0 - 1.0)"),
+    vendor: Optional[str] = Query(None, description="Filter by vendor name (case-insensitive substring)"),
+    reason_code: Optional[str] = Query(None, description="Filter by reason code"),
+    limit: Optional[int] = Query(None, ge=1, description="Maximum number of records to return"),
+    offset: int = Query(0, ge=0, description="Number of records to skip for pagination"),
+    db: Session = Depends(get_db),
+):
     """
     T3.2 — Return persisted anomaly records from the DB, ordered by risk_score descending.
-    Includes explanation and impact_on_30d_forecast.
+    Includes risk_score, reason_code, trigger_metric, explanation, and impact_on_30d_forecast.
     """
-    return get_stored_anomalies(db)
+    return get_stored_anomalies(
+        db=db,
+        min_risk=min_risk,
+        vendor=vendor,
+        reason_code=reason_code,
+        limit=limit,
+        offset=offset,
+    )
 
 
 @router.post("/api/analysis/explain")

@@ -10,7 +10,7 @@ Single-responsibility:
 """
 
 from datetime import date
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 from sqlalchemy.orm import Session
 
@@ -101,11 +101,33 @@ def run_analysis(db: Session) -> Dict[str, Any]:
     }
 
 
-def get_stored_anomalies(db: Session) -> List[Dict[str, Any]]:
-    """Retrieve persisted anomaly records from the DB, ordered by risk_score desc."""
-    rows = (
-        db.query(Anomaly)
-        .order_by(Anomaly.risk_score.desc())
-        .all()
-    )
+def get_stored_anomalies(
+    db: Session,
+    min_risk: Optional[float] = None,
+    vendor: Optional[str] = None,
+    reason_code: Optional[str] = None,
+    limit: Optional[int] = None,
+    offset: int = 0,
+) -> List[Dict[str, Any]]:
+    """
+    Retrieve persisted anomaly records from the DB, ordered by risk_score desc.
+    Supports optional filtering by min_risk, vendor, reason_code, and pagination.
+    """
+    query = db.query(Anomaly)
+
+    if min_risk is not None:
+        query = query.filter(Anomaly.risk_score >= min_risk)
+    if vendor:
+        query = query.filter(Anomaly.vendor.ilike(f"%{vendor.strip()}%"))
+    if reason_code:
+        query = query.filter(Anomaly.reason_code == reason_code.strip())
+
+    query = query.order_by(Anomaly.risk_score.desc(), Anomaly.id.asc())
+
+    if offset > 0:
+        query = query.offset(offset)
+    if limit is not None:
+        query = query.limit(limit)
+
+    rows = query.all()
     return [row.to_dict() for row in rows]
