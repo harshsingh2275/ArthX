@@ -1,0 +1,240 @@
+id,date,vendor,category,amount,type,status,description
+1,2025-10-01,ArunCapital Payroll,Payroll,52649.77,outflow,normal,Regular bimonthly payment
+3,2025-10-01,DataSync SaaS,SaaS,4834.32,outflow,normal,Regular monthly first payment
+4,2025-10-01,CloudOps Pro,SaaS,2216.26,outflow,normal,Regular monthly first payment
+12,2025-10-01,AdNova Marketing,Marketing,6372.42,outflow,normal,Regular monthly first payment
+14,2025-10-01,ClientFirst Revenue,Revenue,100675.01,inflow,normal,Regular monthly first payment
+6,2025-10-10,PowerGrid Utilities,Utilities,3588.12,outflow,normal,Regular monthly 10th payment
+7,2025-10-10,AquaFlow Services,Utilities,712.87,outflow,normal,Regular monthly 10th payment
+10,2025-10-11,HotelStay Corp,Travel,2041.76,outflow,normal,Regular irregular payment
+2,2025-10-15,ArunCapital Payroll,Payroll,51566.55,outflow,normal,Regular bimonthly payment
+5,2025-10-15,SecureVault AI,SaaS,1451.68,outflow,normal,Regular monthly 15th payment
+9,2025-10-15,OfficeDepot Supplies,Office Supplies,890.28,outflow,normal,Regular irregular payment
+13,2025-10-15,MaintenancePro,Facilities,2024.67,outflow,normal,Regular irregular payment
+15,2025-10-15,RetainerB2B Inc,Revenue,11804.03,inflow,normal,Regular monthly 15th payment
+8,2025-10-20,Broadband Express,Utilities,1185.18,outflow,normal,Regular monthly 20th payment
+11,2025-10-28,LegalEdge Partners,Professional Services,9475.81,outflow,normal,Regular monthly end payment
+16,2025-10-28,ContractPlus Ltd,Professional Services,3325.26,outflow,normal,Regular monthly end payment
+17,2025-11-01,ArunCapital Payroll,Payroll,51724.97,outflow,normal,Regular bimonthly payment
+19,2025-11-01,DataSync SaaS,SaaS,4785.47,outflow,normal,Regular monthly first payment
+20,2025-11-01,CloudOps Pro,SaaS,2146.74,outflow,normal,Regular monthly first payment
+30,2025-11-01,AdNova Marketing,Marketing,7221.43,outflow,normal,Regular monthly first payment
+32,2025-11-01,ClientFirst Revenue,Revenue,100300.43,inflow,normal,Regular monthly first payment
+28,2025-11-02,HotelStay Corp,Travel,1716.76,outflow,normal,Regular irregular payment
+26,2025-11-06,TechGear Solutions,Office Supplies,868.21,outflow,normal,Regular irregular payment
+22,2025-11-10,PowerGrid Utilities,Utilities,3199.09,outflow,normal,Regular monthly 10th payment
+23,2025-11-10,AquaFlow Services,Utilities,908.58,outflow,normal,Regular monthly 10th payment
+18,2025-11-15,ArunCapital Payroll,Payroll,52028.55,outflow,normal,Regular bimonthly payment
+21,2025-11-15,SecureVault AI,SaaS,1483.51,outflow,normal,Regular monthly 15th payment
+33,2025-11-15,RetainerB2B Inc,Revenue,12456.06,inflow,normal,Regular monthly 15th payment
+27,2025-11-18,FlightEasy Travel,Travel,3179.42,outflow,normal,Regular irregular payment
+24,2025-11-20,Broadband Express,Utilities,1232.05,outflow,normal,Regular monthly 20th payment
+31,2025-11-20,MaintenancePro,Facilities,1848.08,outflow,normal,Regular irregular payment
+25,2025-11-22,OfficeDepot Supplies,Office Supplies,954.88,outflow,normal,Regular irregular payment
+29,2025-11-28,LegalEdge Partners,Professional Services,9233.09,outflow,normal,Regular monthly end payment
+34,2025-11-28,ContractPlus Ltd,Professional Services,3552.28,outflow,normal,Regular monthly end payment
+35,2025-12-01,ArunCapital Payroll,Payroll,52431.83,outflow,normal,Regular bimonthly payment
+37,2025-12-01,DataSync SaaS,SaaS,4872.72,outflow,normal,Regular monthly first payment
+38,2025-12-01,CloudOps Pro,SaaS,2191.37,outflow,normal,Regular monthly first payment
+48,2025-12-01,AdNova Marketing,Marketing,7245.75,outflow,normal,Regular monthly first payment
+50,2025-12-01,ClientFirst Revenue,Revenue,85343.61,inflow,normal,Regular monthly first payment
+43,2025-12-02,OfficeDepot Supplies,Office Supplies,661.13,outflow,normal,Regular irregular payment
+40,2025-12-10,PowerGrid Utilities,Utilities,3965.83,outflow,normal,Regular monthly 10th payment
+41,2025-12-10,AquaFlow Services,Utilities,876.63,outflow,normal,Regular monthly 10th payment
+45,2025-12-12,FlightEasy Travel,Travel,4878.98,outflow,normal,Regular irregular payment
+36,2025-12-15,ArunCapital Payroll,Payroll,52048.27,outflow,normal,Regular bimonthly payment
+39,2025-12-15,SecureVault AI,SaaS,1453.13,outflow,normal,Regular monthly 15th payment
+52,2025-12-15,RetainerB2B Inc,Revenue,11639.96,inflow,normal,Regular monthly 15th payment
+44,2025-12-16,TechGear Solutions,Office Supplies,966.59,outflow,normal,Regular irregular payment
+42,2025-12-20,Broadband Express,Utilities,1172.24,outflow,normal,Regular monthly 20th payment
+51,2025-12-22,ProjectAlpha Revenue,Revenue,17035.45,inflow,normal,Regular irregular payment
+49,2025-12-24,MaintenancePro,Facilities,2458.4,outflow,normal,Regular irregular payment
+46,2025-12-26,HotelStay Corp,Travel,2126.76,outflow,normal,Regular irregular payment
+47,2025-12-28,LegalEdge Partners,Professional Services,9749.46,outflow,normal,Regular monthly end payment
+53,2025-12-28,ContractPlus Ltd,Professional Services,3663.31,outflow,normal,Regular monthly end payment
+54,2026-01-01,ArunCapital Payroll,Payroll,51212.61,outflow,normal,Regular bimonthly payment
+56,2026-01-01,DataSync SaaS,SaaS,4818.25,outflow,normal,Regular monthly first payment
+57,2026-01-01,CloudOps Pro,SaaS,2193.27,outflow,normal,Regular monthly first payment
+66,2026-01-01,AdNova Marketing,Marketing,7253.25,outflow,normal,Regular monthly first payment
+67,2026-01-01,ClientFirst Revenue,Revenue,96745.68,inflow,normal,Regular monthly first payment
+202,2026-01-01,DataSync SaaS,SaaS,48000.0,outflow,normal,"ANOMALY: Amount is 10.0x vendor mean ($4,800) — suspected duplicate or fraudulent SaaS charge"
+59,2026-01-10,PowerGrid Utilities,Utilities,4652.7,outflow,normal,Regular monthly 10th payment
+60,2026-01-10,AquaFlow Services,Utilities,636.71,outflow,normal,Regular monthly 10th payment
+62,2026-01-11,TechGear Solutions,Office Supplies,613.46,outflow,normal,Regular irregular payment
+64,2026-01-12,HotelStay Corp,Travel,1613.81,outflow,normal,Regular irregular payment
+55,2026-01-15,ArunCapital Payroll,Payroll,51891.95,outflow,normal,Regular bimonthly payment
+58,2026-01-15,SecureVault AI,SaaS,1425.0,outflow,normal,Regular monthly 15th payment
+68,2026-01-15,RetainerB2B Inc,Revenue,12173.57,inflow,normal,Regular monthly 15th payment
+61,2026-01-20,Broadband Express,Utilities,1215.93,outflow,normal,Regular monthly 20th payment
+63,2026-01-21,FlightEasy Travel,Travel,2016.24,outflow,normal,Regular irregular payment
+65,2026-01-28,LegalEdge Partners,Professional Services,10053.4,outflow,normal,Regular monthly end payment
+69,2026-01-28,ContractPlus Ltd,Professional Services,4270.08,outflow,normal,Regular monthly end payment
+205,2026-01-28,LegalEdge Partners,Professional Services,95000.0,outflow,normal,"ANOMALY: Amount is 11.2x vendor mean ($8,500) — suspicious large legal payment"
+70,2026-02-01,ArunCapital Payroll,Payroll,52210.47,outflow,normal,Regular bimonthly payment
+72,2026-02-01,DataSync SaaS,SaaS,4754.25,outflow,normal,Regular monthly first payment
+73,2026-02-01,CloudOps Pro,SaaS,2180.42,outflow,normal,Regular monthly first payment
+82,2026-02-01,AdNova Marketing,Marketing,7446.02,outflow,normal,Regular monthly first payment
+83,2026-02-01,ClientFirst Revenue,Revenue,101457.4,inflow,normal,Regular monthly first payment
+203,2026-02-01,CloudOps Pro,SaaS,32000.0,outflow,normal,"ANOMALY: Amount is 14.5x vendor mean ($2,200) — extreme billing anomaly"
+209,2026-02-01,AdNova Marketing,Marketing,85000.0,outflow,normal,"ANOMALY: Amount is 13.1x vendor mean ($6,500) — marketing invoice 13x normal"
+227,2026-02-01,DataSync SaaS,SaaS,4850.0,outflow,normal,ANOMALY: Duplicate SaaS payment Feb 1 & Feb 2
+228,2026-02-02,DataSync SaaS,SaaS,4850.0,outflow,normal,ANOMALY: Duplicate SaaS payment Feb 1 & Feb 2
+75,2026-02-10,PowerGrid Utilities,Utilities,3416.9,outflow,normal,Regular monthly 10th payment
+76,2026-02-10,AquaFlow Services,Utilities,885.53,outflow,normal,Regular monthly 10th payment
+216,2026-02-11,ArunCapital Payroll,Payroll,52400.0,outflow,normal,ANOMALY: Payroll paid mid-month (expected 1st or 15th)
+71,2026-02-15,ArunCapital Payroll,Payroll,51382.48,outflow,normal,Regular bimonthly payment
+74,2026-02-15,SecureVault AI,SaaS,1468.02,outflow,normal,Regular monthly 15th payment
+80,2026-02-15,HotelStay Corp,Travel,2931.77,outflow,normal,Regular irregular payment
+84,2026-02-15,RetainerB2B Inc,Revenue,12313.79,inflow,normal,Regular monthly 15th payment
+77,2026-02-20,Broadband Express,Utilities,1146.6,outflow,normal,Regular monthly 20th payment
+79,2026-02-20,FlightEasy Travel,Travel,2716.84,outflow,normal,Regular irregular payment
+78,2026-02-21,OfficeDepot Supplies,Office Supplies,754.05,outflow,normal,Regular irregular payment
+81,2026-02-28,LegalEdge Partners,Professional Services,10263.35,outflow,normal,Regular monthly end payment
+85,2026-02-28,ContractPlus Ltd,Professional Services,3908.09,outflow,normal,Regular monthly end payment
+86,2026-03-01,ArunCapital Payroll,Payroll,51948.33,outflow,normal,Regular bimonthly payment
+88,2026-03-01,DataSync SaaS,SaaS,4809.66,outflow,normal,Regular monthly first payment
+89,2026-03-01,CloudOps Pro,SaaS,2284.67,outflow,normal,Regular monthly first payment
+96,2026-03-01,AdNova Marketing,Marketing,7285.6,outflow,normal,Regular monthly first payment
+98,2026-03-01,ClientFirst Revenue,Revenue,90783.08,inflow,normal,Regular monthly first payment
+99,2026-03-04,ProjectAlpha Revenue,Revenue,20589.08,inflow,normal,Regular irregular payment
+221,2026-03-07,FlightEasy Travel,Travel,20000.0,outflow,normal,"ANOMALY: Suspicious round $20,000 (vendor avg ~$2,800)"
+91,2026-03-10,PowerGrid Utilities,Utilities,3275.31,outflow,normal,Regular monthly 10th payment
+92,2026-03-10,AquaFlow Services,Utilities,767.25,outflow,normal,Regular monthly 10th payment
+207,2026-03-12,OfficeDepot Supplies,Office Supplies,18000.0,outflow,normal,ANOMALY: Amount is 26.5x vendor mean ($680) — suspected fraudulent supply order
+87,2026-03-15,ArunCapital Payroll,Payroll,52175.56,outflow,normal,Regular bimonthly payment
+90,2026-03-15,SecureVault AI,SaaS,1520.4,outflow,normal,Regular monthly 15th payment
+97,2026-03-15,MaintenancePro,Facilities,1336.11,outflow,normal,Regular irregular payment
+100,2026-03-15,RetainerB2B Inc,Revenue,12450.97,inflow,normal,Regular monthly 15th payment
+204,2026-03-15,SecureVault AI,SaaS,21000.0,outflow,normal,"ANOMALY: Amount is 14.5x vendor mean ($1,450) — possibly fraudulent security charge"
+94,2026-03-17,FlightEasy Travel,Travel,2412.05,outflow,normal,Regular irregular payment
+219,2026-03-19,ClientFirst Revenue,Revenue,94500.0,inflow,normal,ANOMALY: Revenue received on 19th (expected 1st)
+93,2026-03-20,Broadband Express,Utilities,1166.18,outflow,normal,Regular monthly 20th payment
+95,2026-03-28,LegalEdge Partners,Professional Services,9119.64,outflow,normal,Regular monthly end payment
+101,2026-03-28,ContractPlus Ltd,Professional Services,3947.93,outflow,normal,Regular monthly end payment
+102,2026-04-01,ArunCapital Payroll,Payroll,52066.13,outflow,normal,Regular bimonthly payment
+104,2026-04-01,DataSync SaaS,SaaS,4718.74,outflow,normal,Regular monthly first payment
+105,2026-04-01,CloudOps Pro,SaaS,2150.13,outflow,normal,Regular monthly first payment
+114,2026-04-01,AdNova Marketing,Marketing,6362.95,outflow,normal,Regular monthly first payment
+116,2026-04-01,ClientFirst Revenue,Revenue,104125.14,inflow,normal,Regular monthly first payment
+233,2026-04-01,AdNova Marketing,Marketing,6500.0,outflow,normal,ANOMALY: Duplicate marketing charge Apr 1 & Apr 3
+234,2026-04-03,AdNova Marketing,Marketing,6500.0,outflow,normal,ANOMALY: Duplicate marketing charge Apr 1 & Apr 3
+107,2026-04-10,PowerGrid Utilities,Utilities,2739.75,outflow,normal,Regular monthly 10th payment
+108,2026-04-10,AquaFlow Services,Utilities,875.93,outflow,normal,Regular monthly 10th payment
+112,2026-04-12,HotelStay Corp,Travel,547.39,outflow,normal,Regular irregular payment
+117,2026-04-14,ProjectAlpha Revenue,Revenue,15783.18,inflow,normal,Regular irregular payment
+214,2026-04-14,HotelStay Corp,Travel,28000.0,outflow,normal,"ANOMALY: Amount is 17.5x vendor mean ($1,600) — suspicious hotel charges"
+222,2026-04-14,MaintenancePro,Facilities,25000.0,outflow,normal,"ANOMALY: Suspicious round $25,000 (vendor avg ~$2,200)"
+103,2026-04-15,ArunCapital Payroll,Payroll,52114.3,outflow,normal,Regular bimonthly payment
+106,2026-04-15,SecureVault AI,SaaS,1520.05,outflow,normal,Regular monthly 15th payment
+118,2026-04-15,RetainerB2B Inc,Revenue,12378.77,inflow,normal,Regular monthly 15th payment
+109,2026-04-20,Broadband Express,Utilities,1216.13,outflow,normal,Regular monthly 20th payment
+110,2026-04-20,OfficeDepot Supplies,Office Supplies,871.53,outflow,normal,Regular irregular payment
+111,2026-04-21,FlightEasy Travel,Travel,2574.29,outflow,normal,Regular irregular payment
+115,2026-04-22,MaintenancePro,Facilities,2239.89,outflow,normal,Regular irregular payment
+113,2026-04-28,LegalEdge Partners,Professional Services,6337.46,outflow,normal,Regular monthly end payment
+119,2026-04-28,ContractPlus Ltd,Professional Services,3888.14,outflow,normal,Regular monthly end payment
+206,2026-04-28,LegalEdge Partners,Professional Services,78000.0,outflow,normal,"ANOMALY: Amount is 9.2x vendor mean ($8,500) — second large unexplained legal payment"
+120,2026-05-01,ArunCapital Payroll,Payroll,51181.4,outflow,normal,Regular bimonthly payment
+122,2026-05-01,DataSync SaaS,SaaS,4804.11,outflow,normal,Regular monthly first payment
+123,2026-05-01,CloudOps Pro,SaaS,2264.71,outflow,normal,Regular monthly first payment
+132,2026-05-01,AdNova Marketing,Marketing,7474.61,outflow,normal,Regular monthly first payment
+134,2026-05-01,ClientFirst Revenue,Revenue,92877.79,inflow,normal,Regular monthly first payment
+223,2026-05-03,TechGear Solutions,Office Supplies,50000.0,outflow,normal,"ANOMALY: Suspicious round $50,000 (vendor avg ~$1,100)"
+128,2026-05-06,OfficeDepot Supplies,Office Supplies,361.36,outflow,normal,Regular irregular payment
+217,2026-05-07,ArunCapital Payroll,Payroll,53100.0,outflow,normal,ANOMALY: Payroll paid on 7th (expected 1st or 15th)
+125,2026-05-10,PowerGrid Utilities,Utilities,2701.57,outflow,normal,Regular monthly 10th payment
+126,2026-05-10,AquaFlow Services,Utilities,814.33,outflow,normal,Regular monthly 10th payment
+229,2026-05-10,AquaFlow Services,Utilities,862.0,outflow,normal,ANOMALY: Duplicate utility payment May 10 & May 11
+130,2026-05-11,FlightEasy Travel,Travel,3082.53,outflow,normal,Regular irregular payment
+230,2026-05-11,AquaFlow Services,Utilities,862.0,outflow,normal,ANOMALY: Duplicate utility payment May 10 & May 11
+133,2026-05-13,MaintenancePro,Facilities,878.32,outflow,normal,Regular irregular payment
+121,2026-05-15,ArunCapital Payroll,Payroll,51659.7,outflow,normal,Regular bimonthly payment
+124,2026-05-15,SecureVault AI,SaaS,1457.87,outflow,normal,Regular monthly 15th payment
+135,2026-05-15,RetainerB2B Inc,Revenue,12243.9,inflow,normal,Regular monthly 15th payment
+127,2026-05-20,Broadband Express,Utilities,1216.89,outflow,normal,Regular monthly 20th payment
+208,2026-05-20,Broadband Express,Utilities,14000.0,outflow,normal,"ANOMALY: Amount is 11.7x vendor mean ($1,200) — telecom billing fraud pattern"
+129,2026-05-23,TechGear Solutions,Office Supplies,1021.79,outflow,normal,Regular irregular payment
+131,2026-05-28,LegalEdge Partners,Professional Services,10264.62,outflow,normal,Regular monthly end payment
+136,2026-05-28,ContractPlus Ltd,Professional Services,3392.16,outflow,normal,Regular monthly end payment
+211,2026-05-28,ContractPlus Ltd,Professional Services,55000.0,outflow,normal,"ANOMALY: Amount is 14.5x vendor mean ($3,800) — contract overpayment"
+137,2026-06-01,ArunCapital Payroll,Payroll,51778.41,outflow,normal,Regular bimonthly payment
+139,2026-06-01,DataSync SaaS,SaaS,4851.29,outflow,normal,Regular monthly first payment
+140,2026-06-01,CloudOps Pro,SaaS,2228.62,outflow,normal,Regular monthly first payment
+149,2026-06-01,AdNova Marketing,Marketing,5991.95,outflow,normal,Regular monthly first payment
+150,2026-06-01,ClientFirst Revenue,Revenue,89179.24,inflow,normal,Regular monthly first payment
+210,2026-06-01,AdNova Marketing,Marketing,72000.0,outflow,normal,"ANOMALY: Amount is 11.1x vendor mean ($6,500) — repeated large marketing charge"
+151,2026-06-07,ProjectAlpha Revenue,Revenue,14689.66,inflow,normal,Regular irregular payment
+215,2026-06-07,FlightEasy Travel,Travel,38000.0,outflow,normal,"ANOMALY: Amount is 13.6x vendor mean ($2,800) — executive travel fraud pattern"
+142,2026-06-10,PowerGrid Utilities,Utilities,3639.78,outflow,normal,Regular monthly 10th payment
+143,2026-06-10,AquaFlow Services,Utilities,762.28,outflow,normal,Regular monthly 10th payment
+146,2026-06-10,TechGear Solutions,Office Supplies,1038.66,outflow,normal,Regular irregular payment
+138,2026-06-15,ArunCapital Payroll,Payroll,52196.76,outflow,normal,Regular bimonthly payment
+141,2026-06-15,SecureVault AI,SaaS,1399.2,outflow,normal,Regular monthly 15th payment
+152,2026-06-15,RetainerB2B Inc,Revenue,12489.8,inflow,normal,Regular monthly 15th payment
+145,2026-06-18,OfficeDepot Supplies,Office Supplies,1265.82,outflow,normal,Regular irregular payment
+144,2026-06-20,Broadband Express,Utilities,1214.74,outflow,normal,Regular monthly 20th payment
+147,2026-06-20,FlightEasy Travel,Travel,3577.88,outflow,normal,Regular irregular payment
+224,2026-06-22,HotelStay Corp,Travel,30000.0,outflow,normal,"ANOMALY: Suspicious round $30,000 hotel charge"
+148,2026-06-28,LegalEdge Partners,Professional Services,8996.21,outflow,normal,Regular monthly end payment
+153,2026-06-28,ContractPlus Ltd,Professional Services,3757.06,outflow,normal,Regular monthly end payment
+235,2026-06-28,ContractPlus Ltd,Professional Services,3800.0,outflow,normal,ANOMALY: Duplicate contract fee Jun 28 & Jun 30
+236,2026-06-30,ContractPlus Ltd,Professional Services,3800.0,outflow,normal,ANOMALY: Duplicate contract fee Jun 28 & Jun 30
+154,2026-07-01,ArunCapital Payroll,Payroll,51857.62,outflow,normal,Regular bimonthly payment
+156,2026-07-01,DataSync SaaS,SaaS,4909.16,outflow,normal,Regular monthly first payment
+157,2026-07-01,CloudOps Pro,SaaS,2227.38,outflow,normal,Regular monthly first payment
+165,2026-07-01,AdNova Marketing,Marketing,6167.38,outflow,normal,Regular monthly first payment
+167,2026-07-01,ClientFirst Revenue,Revenue,91398.08,inflow,normal,Regular monthly first payment
+168,2026-07-04,ProjectAlpha Revenue,Revenue,12917.74,inflow,normal,Regular irregular payment
+159,2026-07-10,PowerGrid Utilities,Utilities,4835.16,outflow,normal,Regular monthly 10th payment
+160,2026-07-10,AquaFlow Services,Utilities,824.45,outflow,normal,Regular monthly 10th payment
+212,2026-07-10,AquaFlow Services,Utilities,12500.0,outflow,normal,ANOMALY: Amount is 14.7x vendor mean ($850) — suspicious utility spike
+162,2026-07-13,TechGear Solutions,Office Supplies,1627.04,outflow,normal,Regular irregular payment
+155,2026-07-15,ArunCapital Payroll,Payroll,52308.67,outflow,normal,Regular bimonthly payment
+158,2026-07-15,SecureVault AI,SaaS,1435.37,outflow,normal,Regular monthly 15th payment
+169,2026-07-15,RetainerB2B Inc,Revenue,12028.58,inflow,normal,Regular monthly 15th payment
+220,2026-07-16,DataSync SaaS,SaaS,4820.0,outflow,normal,"ANOMALY: SaaS payment on 16th — 15 days late, possible duplicate risk"
+161,2026-07-20,Broadband Express,Utilities,1204.6,outflow,normal,Regular monthly 20th payment
+166,2026-07-20,MaintenancePro,Facilities,2090.67,outflow,normal,Regular irregular payment
+163,2026-07-21,FlightEasy Travel,Travel,2464.85,outflow,normal,Regular irregular payment
+164,2026-07-28,LegalEdge Partners,Professional Services,8698.93,outflow,normal,Regular monthly end payment
+170,2026-07-28,ContractPlus Ltd,Professional Services,3377.1,outflow,normal,Regular monthly end payment
+225,2026-07-28,LegalEdge Partners,Professional Services,100000.0,outflow,normal,"ANOMALY: Suspicious round $100,000 legal payment"
+231,2026-07-28,LegalEdge Partners,Professional Services,8750.0,outflow,normal,ANOMALY: Duplicate legal fee July 28 & July 29
+232,2026-07-29,LegalEdge Partners,Professional Services,8750.0,outflow,normal,ANOMALY: Duplicate legal fee July 28 & July 29
+171,2026-08-01,ArunCapital Payroll,Payroll,51467.94,outflow,normal,Regular bimonthly payment
+173,2026-08-01,DataSync SaaS,SaaS,4842.94,outflow,normal,Regular monthly first payment
+174,2026-08-01,CloudOps Pro,SaaS,2144.17,outflow,normal,Regular monthly first payment
+181,2026-08-01,AdNova Marketing,Marketing,5517.35,outflow,normal,Regular monthly first payment
+182,2026-08-01,ClientFirst Revenue,Revenue,98003.36,inflow,normal,Regular monthly first payment
+237,2026-08-01,CloudOps Pro,SaaS,2200.0,outflow,normal,ANOMALY: Duplicate cloud billing Aug 1 & Aug 2
+238,2026-08-02,CloudOps Pro,SaaS,2200.0,outflow,normal,ANOMALY: Duplicate cloud billing Aug 1 & Aug 2
+213,2026-08-03,TechGear Solutions,Office Supplies,45000.0,outflow,normal,"ANOMALY: Amount is 40.9x vendor mean ($1,100) — extreme equipment purchase"
+176,2026-08-10,PowerGrid Utilities,Utilities,2704.53,outflow,normal,Regular monthly 10th payment
+177,2026-08-10,AquaFlow Services,Utilities,850.33,outflow,normal,Regular monthly 10th payment
+172,2026-08-15,ArunCapital Payroll,Payroll,53013.08,outflow,normal,Regular bimonthly payment
+175,2026-08-15,SecureVault AI,SaaS,1509.19,outflow,normal,Regular monthly 15th payment
+183,2026-08-15,RetainerB2B Inc,Revenue,12110.58,inflow,normal,Regular monthly 15th payment
+239,2026-08-15,LegalEdge Partners,Professional Services,125000.0,outflow,normal,"ANOMALY [HIGH-IMPACT]: Unexplained legal payment $125,000 — 14.7x vendor average. Recent enough to shift 30-day forecast."
+218,2026-08-19,ArunCapital Payroll,Payroll,52700.0,outflow,normal,ANOMALY: Third mid-month payroll this year — escalating pattern
+178,2026-08-20,Broadband Express,Utilities,1230.48,outflow,normal,Regular monthly 20th payment
+179,2026-08-27,FlightEasy Travel,Travel,2736.54,outflow,normal,Regular irregular payment
+180,2026-08-28,LegalEdge Partners,Professional Services,7570.7,outflow,normal,Regular monthly end payment
+184,2026-08-28,ContractPlus Ltd,Professional Services,4538.04,outflow,normal,Regular monthly end payment
+185,2026-09-01,ArunCapital Payroll,Payroll,56223.56,outflow,normal,Regular bimonthly payment
+187,2026-09-01,DataSync SaaS,SaaS,5339.79,outflow,normal,Regular monthly first payment
+188,2026-09-01,CloudOps Pro,SaaS,2521.64,outflow,normal,Regular monthly first payment
+197,2026-09-01,AdNova Marketing,Marketing,6397.36,outflow,normal,Regular monthly first payment
+199,2026-09-01,ClientFirst Revenue,Revenue,88682.97,inflow,normal,Regular monthly first payment
+200,2026-09-02,ProjectAlpha Revenue,Revenue,24445.12,inflow,normal,Regular irregular payment
+226,2026-09-02,OfficeDepot Supplies,Office Supplies,40000.0,outflow,normal,"ANOMALY: Suspicious round $40,000 supply order"
+194,2026-09-04,TechGear Solutions,Office Supplies,1409.19,outflow,normal,Regular irregular payment
+198,2026-09-04,MaintenancePro,Facilities,3115.07,outflow,normal,Regular irregular payment
+196,2026-09-05,HotelStay Corp,Travel,2375.36,outflow,normal,Regular irregular payment
+190,2026-09-10,PowerGrid Utilities,Utilities,3489.3,outflow,normal,Regular monthly 10th payment
+191,2026-09-10,AquaFlow Services,Utilities,804.5,outflow,normal,Regular monthly 10th payment
+186,2026-09-15,ArunCapital Payroll,Payroll,59703.27,outflow,normal,Regular bimonthly payment
+189,2026-09-15,SecureVault AI,SaaS,1627.62,outflow,normal,Regular monthly 15th payment
+201,2026-09-15,RetainerB2B Inc,Revenue,12251.03,inflow,normal,Regular monthly 15th payment
+192,2026-09-20,Broadband Express,Utilities,1403.35,outflow,normal,Regular monthly 20th payment
+193,2026-09-22,OfficeDepot Supplies,Office Supplies,664.9,outflow,normal,Regular irregular payment
+195,2026-09-24,FlightEasy Travel,Travel,2823.85,outflow,normal,Regular irregular payment

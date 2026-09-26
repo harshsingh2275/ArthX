@@ -1,0 +1,703 @@
+{
+  "meta": {
+    "dataset": "B",
+    "label": "High Fraud Activity",
+    "seed": 143,
+    "generated_date": "2026-09-25",
+    "start_date": "2025-10-01",
+    "end_date": "2026-09-25",
+    "high_impact_anomaly_transaction_id": 239,
+    "high_impact_anomaly_date": "2026-08-15",
+    "high_impact_anomaly_amount": 125000.0,
+    "high_impact_anomaly_vendor": "LegalEdge Partners",
+    "description": "High fraud activity dataset with 33 injected anomalies and 10 duplicate invoice pairs."
+  },
+  "anomalous_transactions": [
+    {
+      "transaction_id": 202,
+      "vendor": "DataSync SaaS",
+      "amount": 48000.0,
+      "date": "2026-01-01",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 10.0x vendor mean ($4,800) \u2014 suspected duplicate or fraudulent SaaS charge",
+      "expected_zscore": 283.49,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 203,
+      "vendor": "CloudOps Pro",
+      "amount": 32000.0,
+      "date": "2026-02-01",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 14.5x vendor mean ($2,200) \u2014 extreme billing anomaly",
+      "expected_zscore": 303.57,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 204,
+      "vendor": "SecureVault AI",
+      "amount": 21000.0,
+      "date": "2026-03-15",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 14.5x vendor mean ($1,450) \u2014 possibly fraudulent security charge",
+      "expected_zscore": 339.86,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 205,
+      "vendor": "LegalEdge Partners",
+      "amount": 95000.0,
+      "date": "2026-01-28",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 11.2x vendor mean ($8,500) \u2014 suspicious large legal payment",
+      "expected_zscore": 75.28,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 206,
+      "vendor": "LegalEdge Partners",
+      "amount": 78000.0,
+      "date": "2026-04-28",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 9.2x vendor mean ($8,500) \u2014 second large unexplained legal payment",
+      "expected_zscore": 60.39,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 207,
+      "vendor": "OfficeDepot Supplies",
+      "amount": 18000.0,
+      "date": "2026-03-12",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 26.5x vendor mean ($680) \u2014 suspected fraudulent supply order",
+      "expected_zscore": 69.76,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 208,
+      "vendor": "Broadband Express",
+      "amount": 14000.0,
+      "date": "2026-05-20",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 11.7x vendor mean ($1,200) \u2014 telecom billing fraud pattern",
+      "expected_zscore": 206.8,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 209,
+      "vendor": "AdNova Marketing",
+      "amount": 85000.0,
+      "date": "2026-02-01",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 13.1x vendor mean ($6,500) \u2014 marketing invoice 13x normal",
+      "expected_zscore": 122.97,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 210,
+      "vendor": "AdNova Marketing",
+      "amount": 72000.0,
+      "date": "2026-06-01",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 11.1x vendor mean ($6,500) \u2014 repeated large marketing charge",
+      "expected_zscore": 102.54,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 211,
+      "vendor": "ContractPlus Ltd",
+      "amount": 55000.0,
+      "date": "2026-05-28",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 14.5x vendor mean ($3,800) \u2014 contract overpayment",
+      "expected_zscore": 140.75,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 212,
+      "vendor": "AquaFlow Services",
+      "amount": 12500.0,
+      "date": "2026-07-10",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 14.7x vendor mean ($850) \u2014 suspicious utility spike",
+      "expected_zscore": 153.43,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 213,
+      "vendor": "TechGear Solutions",
+      "amount": 45000.0,
+      "date": "2026-08-03",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 40.9x vendor mean ($1,100) \u2014 extreme equipment purchase",
+      "expected_zscore": 140.09,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 214,
+      "vendor": "HotelStay Corp",
+      "amount": 28000.0,
+      "date": "2026-04-14",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 17.5x vendor mean ($1,600) \u2014 suspicious hotel charges",
+      "expected_zscore": 37.96,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 215,
+      "vendor": "FlightEasy Travel",
+      "amount": 38000.0,
+      "date": "2026-06-07",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 13.6x vendor mean ($2,800) \u2014 executive travel fraud pattern",
+      "expected_zscore": 48.11,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 216,
+      "vendor": "ArunCapital Payroll",
+      "amount": 52400.0,
+      "date": "2026-02-11",
+      "anomaly_type": "OFF_SCHEDULE",
+      "reason": "Payroll paid mid-month (expected 1st or 15th)",
+      "expected_zscore": -1.0,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 217,
+      "vendor": "ArunCapital Payroll",
+      "amount": 53100.0,
+      "date": "2026-05-07",
+      "anomaly_type": "OFF_SCHEDULE",
+      "reason": "Payroll paid on 7th (expected 1st or 15th)",
+      "expected_zscore": -1.0,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 218,
+      "vendor": "ArunCapital Payroll",
+      "amount": 52700.0,
+      "date": "2026-08-19",
+      "anomaly_type": "OFF_SCHEDULE",
+      "reason": "Third mid-month payroll this year \u2014 escalating pattern",
+      "expected_zscore": -1.0,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 219,
+      "vendor": "ClientFirst Revenue",
+      "amount": 94500.0,
+      "date": "2026-03-19",
+      "anomaly_type": "OFF_SCHEDULE",
+      "reason": "Revenue received on 19th (expected 1st)",
+      "expected_zscore": -1.0,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 220,
+      "vendor": "DataSync SaaS",
+      "amount": 4820.0,
+      "date": "2026-07-16",
+      "anomaly_type": "OFF_SCHEDULE",
+      "reason": "SaaS payment on 16th \u2014 15 days late, possible duplicate risk",
+      "expected_zscore": -1.0,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 221,
+      "vendor": "FlightEasy Travel",
+      "amount": 20000.0,
+      "date": "2026-03-07",
+      "anomaly_type": "ROUND_NUMBER_OUTLIER",
+      "reason": "Suspicious round $20,000 (vendor avg ~$2,800)",
+      "expected_zscore": 23.4,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 222,
+      "vendor": "MaintenancePro",
+      "amount": 25000.0,
+      "date": "2026-04-14",
+      "anomaly_type": "ROUND_NUMBER_OUTLIER",
+      "reason": "Suspicious round $25,000 (vendor avg ~$2,200)",
+      "expected_zscore": 36.13,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 223,
+      "vendor": "TechGear Solutions",
+      "amount": 50000.0,
+      "date": "2026-05-03",
+      "anomaly_type": "ROUND_NUMBER_OUTLIER",
+      "reason": "Suspicious round $50,000 (vendor avg ~$1,100)",
+      "expected_zscore": 156.04,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 224,
+      "vendor": "HotelStay Corp",
+      "amount": 30000.0,
+      "date": "2026-06-22",
+      "anomaly_type": "ROUND_NUMBER_OUTLIER",
+      "reason": "Suspicious round $30,000 hotel charge",
+      "expected_zscore": 40.87,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 225,
+      "vendor": "LegalEdge Partners",
+      "amount": 100000.0,
+      "date": "2026-07-28",
+      "anomaly_type": "ROUND_NUMBER_OUTLIER",
+      "reason": "Suspicious round $100,000 legal payment",
+      "expected_zscore": 79.66,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 226,
+      "vendor": "OfficeDepot Supplies",
+      "amount": 40000.0,
+      "date": "2026-09-02",
+      "anomaly_type": "ROUND_NUMBER_OUTLIER",
+      "reason": "Suspicious round $40,000 supply order",
+      "expected_zscore": 158.99,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 227,
+      "vendor": "DataSync SaaS",
+      "amount": 4850.0,
+      "date": "2026-02-01",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate SaaS payment Feb 1 & Feb 2",
+      "expected_zscore": -0.08,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 228,
+      "vendor": "DataSync SaaS",
+      "amount": 4850.0,
+      "date": "2026-02-02",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate SaaS payment Feb 1 & Feb 2",
+      "expected_zscore": -0.08,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 229,
+      "vendor": "AquaFlow Services",
+      "amount": 862.0,
+      "date": "2026-05-10",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate utility payment May 10 & May 11",
+      "expected_zscore": 0.68,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 230,
+      "vendor": "AquaFlow Services",
+      "amount": 862.0,
+      "date": "2026-05-11",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate utility payment May 10 & May 11",
+      "expected_zscore": 0.68,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 231,
+      "vendor": "LegalEdge Partners",
+      "amount": 8750.0,
+      "date": "2026-07-28",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate legal fee July 28 & July 29",
+      "expected_zscore": -0.28,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 232,
+      "vendor": "LegalEdge Partners",
+      "amount": 8750.0,
+      "date": "2026-07-29",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate legal fee July 28 & July 29",
+      "expected_zscore": -0.28,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 233,
+      "vendor": "AdNova Marketing",
+      "amount": 6500.0,
+      "date": "2026-04-01",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate marketing charge Apr 1 & Apr 3",
+      "expected_zscore": -0.36,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 234,
+      "vendor": "AdNova Marketing",
+      "amount": 6500.0,
+      "date": "2026-04-03",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate marketing charge Apr 1 & Apr 3",
+      "expected_zscore": -0.36,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 235,
+      "vendor": "ContractPlus Ltd",
+      "amount": 3800.0,
+      "date": "2026-06-28",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate contract fee Jun 28 & Jun 30",
+      "expected_zscore": 0.05,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 236,
+      "vendor": "ContractPlus Ltd",
+      "amount": 3800.0,
+      "date": "2026-06-30",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate contract fee Jun 28 & Jun 30",
+      "expected_zscore": 0.05,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 237,
+      "vendor": "CloudOps Pro",
+      "amount": 2200.0,
+      "date": "2026-08-01",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate cloud billing Aug 1 & Aug 2",
+      "expected_zscore": -0.3,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 238,
+      "vendor": "CloudOps Pro",
+      "amount": 2200.0,
+      "date": "2026-08-02",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate cloud billing Aug 1 & Aug 2",
+      "expected_zscore": -0.3,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 239,
+      "vendor": "LegalEdge Partners",
+      "amount": 125000.0,
+      "date": "2026-08-15",
+      "anomaly_type": "HIGH_IMPACT_AMOUNT_OUTLIER",
+      "reason": "Legal payment $125,000 vs vendor mean $9069 (z-score ~102). Excluding this transaction reduces forecast outflows by ~$125,000 over the next 30 days.",
+      "expected_zscore": 101.57,
+      "is_high_impact": true
+    }
+  ],
+  "anomalous_transaction_ids": [
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239
+  ],
+  "duplicate_invoices": [
+    {
+      "invoice_ids": [
+        128,
+        129
+      ],
+      "vendor": "DataSync SaaS",
+      "amount": 4800.0,
+      "invoice_date_1": "2026-03-01",
+      "invoice_date_2": "2026-03-05",
+      "gap_days": 4,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Duplicate SaaS invoice: same vendor+amount 4 days apart"
+    },
+    {
+      "invoice_ids": [
+        130,
+        131
+      ],
+      "vendor": "CloudOps Pro",
+      "amount": 2200.0,
+      "invoice_date_1": "2026-04-01",
+      "invoice_date_2": "2026-04-04",
+      "gap_days": 3,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Duplicate cloud invoice: 3-day gap"
+    },
+    {
+      "invoice_ids": [
+        132,
+        133
+      ],
+      "vendor": "LegalEdge Partners",
+      "amount": 8500.0,
+      "invoice_date_1": "2026-02-28",
+      "invoice_date_2": "2026-03-03",
+      "gap_days": 3,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Near-duplicate legal invoice: 3-day gap"
+    },
+    {
+      "invoice_ids": [
+        134,
+        135
+      ],
+      "vendor": "AdNova Marketing",
+      "amount": 6500.0,
+      "invoice_date_1": "2026-05-01",
+      "invoice_date_2": "2026-05-06",
+      "gap_days": 5,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Duplicate marketing retainer: billed twice"
+    },
+    {
+      "invoice_ids": [
+        136,
+        137
+      ],
+      "vendor": "PowerGrid Utilities",
+      "amount": 3350.0,
+      "invoice_date_1": "2026-06-10",
+      "invoice_date_2": "2026-06-14",
+      "gap_days": 4,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Near-duplicate utility invoice: 4-day gap"
+    },
+    {
+      "invoice_ids": [
+        138,
+        139
+      ],
+      "vendor": "OfficeDepot Supplies",
+      "amount": 695.0,
+      "invoice_date_1": "2026-07-15",
+      "invoice_date_2": "2026-07-19",
+      "gap_days": 4,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Possible duplicate supply order"
+    },
+    {
+      "invoice_ids": [
+        140,
+        141
+      ],
+      "vendor": "ContractPlus Ltd",
+      "amount": 3800.0,
+      "invoice_date_1": "2026-08-28",
+      "invoice_date_2": "2026-09-02",
+      "gap_days": 5,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Duplicate contract invoice spanning month boundary"
+    },
+    {
+      "invoice_ids": [
+        142,
+        143
+      ],
+      "vendor": "AdNova Marketing",
+      "amount": 6500.0,
+      "invoice_date_1": "2026-08-01",
+      "invoice_date_2": "2026-08-06",
+      "gap_days": 5,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Marketing retainer billed twice in August"
+    },
+    {
+      "invoice_ids": [
+        144,
+        145
+      ],
+      "vendor": "LegalEdge Partners",
+      "amount": 8750.0,
+      "invoice_date_1": "2026-07-28",
+      "invoice_date_2": "2026-08-01",
+      "gap_days": 4,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Legal retainer near-dup: July 28 & Aug 1"
+    },
+    {
+      "invoice_ids": [
+        146,
+        147
+      ],
+      "vendor": "SecureVault AI",
+      "amount": 1450.0,
+      "invoice_date_1": "2026-09-15",
+      "invoice_date_2": "2026-09-19",
+      "gap_days": 4,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Duplicate SaaS security invoice in September"
+    }
+  ],
+  "missing_po_invoices": [
+    {
+      "invoice_id": 1,
+      "vendor": "DataSync SaaS",
+      "amount": 4834.32,
+      "invoice_date": "2025-10-01",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    },
+    {
+      "invoice_id": 4,
+      "vendor": "PowerGrid Utilities",
+      "amount": 3588.12,
+      "invoice_date": "2025-10-10",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    },
+    {
+      "invoice_id": 5,
+      "vendor": "AquaFlow Services",
+      "amount": 712.87,
+      "invoice_date": "2025-10-10",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    },
+    {
+      "invoice_id": 8,
+      "vendor": "MaintenancePro",
+      "amount": 2024.67,
+      "invoice_date": "2025-10-15",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    },
+    {
+      "invoice_id": 10,
+      "vendor": "LegalEdge Partners",
+      "amount": 9475.81,
+      "invoice_date": "2025-10-28",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    }
+  ],
+  "vendor_stats_at_generation": {
+    "ArunCapital Payroll": {
+      "mean": 52451.76,
+      "std": 1786.09,
+      "n": 24
+    },
+    "DataSync SaaS": {
+      "mean": 4861.72,
+      "std": 152.17,
+      "n": 12
+    },
+    "CloudOps Pro": {
+      "mean": 2229.12,
+      "std": 98.07,
+      "n": 12
+    },
+    "SecureVault AI": {
+      "mean": 1479.25,
+      "std": 57.44,
+      "n": 12
+    },
+    "PowerGrid Utilities": {
+      "mean": 3517.34,
+      "std": 667.61,
+      "n": 12
+    },
+    "AquaFlow Services": {
+      "mean": 809.95,
+      "std": 76.19,
+      "n": 12
+    },
+    "Broadband Express": {
+      "mean": 1217.03,
+      "std": 61.81,
+      "n": 12
+    },
+    "OfficeDepot Supplies": {
+      "mean": 802.99,
+      "std": 246.53,
+      "n": 8
+    },
+    "TechGear Solutions": {
+      "mean": 1077.85,
+      "std": 313.52,
+      "n": 7
+    },
+    "FlightEasy Travel": {
+      "mean": 2951.22,
+      "std": 728.58,
+      "n": 11
+    },
+    "HotelStay Corp": {
+      "mean": 1907.66,
+      "std": 687.3,
+      "n": 7
+    },
+    "LegalEdge Partners": {
+      "mean": 9069.33,
+      "std": 1141.43,
+      "n": 11
+    },
+    "AdNova Marketing": {
+      "mean": 6728.01,
+      "std": 636.53,
+      "n": 12
+    },
+    "MaintenancePro": {
+      "mean": 1998.9,
+      "std": 636.58,
+      "n": 8
+    },
+    "ClientFirst Revenue": {
+      "mean": 94964.32,
+      "std": 5770.69,
+      "n": 12
+    },
+    "ProjectAlpha Revenue": {
+      "mean": 17576.7,
+      "std": 3868.68,
+      "n": 6
+    },
+    "RetainerB2B Inc": {
+      "mean": 12195.09,
+      "std": 253.34,
+      "n": 12
+    },
+    "ContractPlus Ltd": {
+      "mean": 3783.59,
+      "std": 363.88,
+      "n": 11
+    }
+  }
+}

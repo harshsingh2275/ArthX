@@ -8,6 +8,7 @@ import {
   fetchAnomalies,
   fetchForecast,
   fetchInvoiceIssues,
+  fetchDatasets,
   runAnalysis,
 } from '../api/client';
 import Sidebar         from '../components/Sidebar';
@@ -36,6 +37,9 @@ export default function DashboardPage() {
   const [loadingData,   setLoadingData]   = useState(true);
   const [runningAnalysis, setRunningAnalysis] = useState(false);
   const [error,         setError]         = useState(null);
+  // Dataset switcher state
+  const [datasets,      setDatasets]      = useState([]);
+  const [activeDataset, setActiveDataset] = useState(null); // null = default/current data
 
   const loadDashboardData = useCallback(async () => {
     setLoadingData(true);
@@ -58,14 +62,22 @@ export default function DashboardPage() {
     }
   }, []);
 
+  // Load dataset registry on mount
+  useEffect(() => {
+    fetchDatasets()
+      .then(res => setDatasets(res?.datasets ?? []))
+      .catch(() => {}); // non-fatal
+  }, []);
+
   // Auto-load on mount
   useEffect(() => { loadDashboardData(); }, [loadDashboardData]);
 
-  const handleRunAnalysis = async () => {
+  const handleRunAnalysis = async (datasetId = null) => {
     setRunningAnalysis(true);
     setError(null);
     try {
-      await runAnalysis();
+      await runAnalysis(datasetId);
+      if (datasetId) setActiveDataset(datasetId);
       await loadDashboardData();
     } catch (err) {
       setError(err.message);
@@ -95,7 +107,12 @@ export default function DashboardPage() {
 
       {/* Main wrapper — offset by sidebar width */}
       <div style={{ paddingLeft: 64, width: '100%', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-        <TopNav onRunAnalysis={handleRunAnalysis} running={runningAnalysis} />
+        <TopNav
+          onRunAnalysis={handleRunAnalysis}
+          running={runningAnalysis}
+          datasets={datasets}
+          activeDataset={activeDataset ?? (datasets[0]?.id ?? null)}
+        />
 
         {/* Sub-navigation tab bar */}
         <div style={{

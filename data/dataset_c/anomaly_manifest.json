@@ -1,0 +1,308 @@
+{
+  "meta": {
+    "dataset": "C",
+    "label": "Cash Flow Crisis",
+    "seed": 271,
+    "generated_date": "2026-09-25",
+    "start_date": "2025-10-01",
+    "end_date": "2026-09-25",
+    "high_impact_anomaly_transaction_id": 196,
+    "high_impact_anomaly_date": "2026-09-01",
+    "high_impact_anomaly_amount": 55000.0,
+    "high_impact_anomaly_vendor": "PowerGrid Utilities",
+    "description": "Cash flow crisis: steep outflow ramp + revenue decline over last 90 days. Only 8 anomalies."
+  },
+  "anomalous_transactions": [
+    {
+      "transaction_id": 189,
+      "vendor": "DataSync SaaS",
+      "amount": 28500.0,
+      "date": "2026-01-01",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 5.9x vendor mean ($4,800)",
+      "expected_zscore": 33.45,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 190,
+      "vendor": "CloudOps Pro",
+      "amount": 14200.0,
+      "date": "2026-03-01",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 6.5x vendor mean ($2,200)",
+      "expected_zscore": 33.62,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 191,
+      "vendor": "ArunCapital Payroll",
+      "amount": 52400.0,
+      "date": "2026-04-12",
+      "anomaly_type": "OFF_SCHEDULE",
+      "reason": "Payroll paid mid-month (expected 1st or 15th)",
+      "expected_zscore": -1.0,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 192,
+      "vendor": "FlightEasy Travel",
+      "amount": 10000.0,
+      "date": "2026-05-07",
+      "anomaly_type": "ROUND_NUMBER_OUTLIER",
+      "reason": "Suspicious round $10,000 (vendor avg ~$2,800)",
+      "expected_zscore": 9.45,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 193,
+      "vendor": "LegalEdge Partners",
+      "amount": 35000.0,
+      "date": "2026-02-28",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 4.1x vendor mean ($8,500)",
+      "expected_zscore": 9.72,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 194,
+      "vendor": "DataSync SaaS",
+      "amount": 4850.0,
+      "date": "2026-04-01",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate SaaS payment Apr 1",
+      "expected_zscore": -0.36,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 195,
+      "vendor": "DataSync SaaS",
+      "amount": 4850.0,
+      "date": "2026-04-02",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate SaaS payment Apr 2 (pair with Apr 1)",
+      "expected_zscore": -0.36,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 196,
+      "vendor": "PowerGrid Utilities",
+      "amount": 55000.0,
+      "date": "2026-09-01",
+      "anomaly_type": "HIGH_IMPACT_AMOUNT_OUTLIER",
+      "reason": "Utility charge $55,000 vs vendor mean $3643 (z-score ~56). Combined with the declining revenue trend, excluding this shifts the 30-day forecast by ~$55,000.",
+      "expected_zscore": 56.2,
+      "is_high_impact": true
+    }
+  ],
+  "anomalous_transaction_ids": [
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196
+  ],
+  "duplicate_invoices": [
+    {
+      "invoice_ids": [
+        128,
+        129
+      ],
+      "vendor": "DataSync SaaS",
+      "amount": 4800.0,
+      "invoice_date_1": "2026-03-01",
+      "invoice_date_2": "2026-03-05",
+      "gap_days": 4,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Duplicate SaaS invoice: 4-day gap"
+    },
+    {
+      "invoice_ids": [
+        130,
+        131
+      ],
+      "vendor": "CloudOps Pro",
+      "amount": 2200.0,
+      "invoice_date_1": "2026-04-01",
+      "invoice_date_2": "2026-04-06",
+      "gap_days": 5,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Duplicate cloud invoice: 5-day gap"
+    },
+    {
+      "invoice_ids": [
+        132,
+        133
+      ],
+      "vendor": "LegalEdge Partners",
+      "amount": 8500.0,
+      "invoice_date_1": "2026-02-28",
+      "invoice_date_2": "2026-03-03",
+      "gap_days": 3,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Near-duplicate legal invoice: 3-day gap"
+    },
+    {
+      "invoice_ids": [
+        134,
+        135
+      ],
+      "vendor": "AdNova Marketing",
+      "amount": 6500.0,
+      "invoice_date_1": "2026-05-01",
+      "invoice_date_2": "2026-05-07",
+      "gap_days": 6,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Duplicate marketing retainer"
+    },
+    {
+      "invoice_ids": [
+        136,
+        137
+      ],
+      "vendor": "PowerGrid Utilities",
+      "amount": 3350.0,
+      "invoice_date_1": "2026-06-10",
+      "invoice_date_2": "2026-06-14",
+      "gap_days": 4,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Near-duplicate utility invoice: 4-day gap"
+    }
+  ],
+  "missing_po_invoices": [
+    {
+      "invoice_id": 1,
+      "vendor": "DataSync SaaS",
+      "amount": 4778.63,
+      "invoice_date": "2025-10-01",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    },
+    {
+      "invoice_id": 2,
+      "vendor": "CloudOps Pro",
+      "amount": 2130.72,
+      "invoice_date": "2025-10-01",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    },
+    {
+      "invoice_id": 5,
+      "vendor": "AquaFlow Services",
+      "amount": 994.58,
+      "invoice_date": "2025-10-10",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    },
+    {
+      "invoice_id": 11,
+      "vendor": "DataSync SaaS",
+      "amount": 4773.32,
+      "invoice_date": "2025-11-01",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    },
+    {
+      "invoice_id": 13,
+      "vendor": "AdNova Marketing",
+      "amount": 5437.32,
+      "invoice_date": "2025-11-01",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    }
+  ],
+  "vendor_stats_at_generation": {
+    "ArunCapital Payroll": {
+      "mean": 56328.62,
+      "std": 9074.23,
+      "n": 24
+    },
+    "DataSync SaaS": {
+      "mean": 5098.76,
+      "std": 699.57,
+      "n": 12
+    },
+    "CloudOps Pro": {
+      "mean": 2325.94,
+      "std": 353.21,
+      "n": 12
+    },
+    "SecureVault AI": {
+      "mean": 1588.75,
+      "std": 287.48,
+      "n": 12
+    },
+    "PowerGrid Utilities": {
+      "mean": 3642.69,
+      "std": 913.82,
+      "n": 12
+    },
+    "AquaFlow Services": {
+      "mean": 916.04,
+      "std": 176.9,
+      "n": 12
+    },
+    "Broadband Express": {
+      "mean": 1331.51,
+      "std": 243.15,
+      "n": 12
+    },
+    "OfficeDepot Supplies": {
+      "mean": 800.01,
+      "std": 469.1,
+      "n": 7
+    },
+    "TechGear Solutions": {
+      "mean": 954.51,
+      "std": 400.66,
+      "n": 5
+    },
+    "FlightEasy Travel": {
+      "mean": 2577.16,
+      "std": 785.46,
+      "n": 5
+    },
+    "HotelStay Corp": {
+      "mean": 1333.1,
+      "std": 282.27,
+      "n": 3
+    },
+    "LegalEdge Partners": {
+      "mean": 8375.33,
+      "std": 2739.96,
+      "n": 11
+    },
+    "AdNova Marketing": {
+      "mean": 7030.64,
+      "std": 1597.58,
+      "n": 12
+    },
+    "MaintenancePro": {
+      "mean": 2247.73,
+      "std": 911.08,
+      "n": 8
+    },
+    "ClientFirst Revenue": {
+      "mean": 91638.73,
+      "std": 9691.12,
+      "n": 12
+    },
+    "ProjectAlpha Revenue": {
+      "mean": 17292.26,
+      "std": 4813.65,
+      "n": 6
+    },
+    "RetainerB2B Inc": {
+      "mean": 12103.76,
+      "std": 365.99,
+      "n": 12
+    },
+    "ContractPlus Ltd": {
+      "mean": 4046.25,
+      "std": 496.64,
+      "n": 11
+    }
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "meta": {
+    "dataset": "D",
+    "label": "Mostly Clean",
+    "seed": 419,
+    "generated_date": "2026-09-25",
+    "start_date": "2025-10-01",
+    "end_date": "2026-09-25",
+    "high_impact_anomaly_transaction_id": 197,
+    "high_impact_anomaly_date": "2026-07-20",
+    "high_impact_anomaly_amount": 32000.0,
+    "high_impact_anomaly_vendor": "PowerGrid Utilities",
+    "description": "Mostly clean dataset: only 4 anomalies, stable positive cash flow with mild seasonality. Proves the model doesn't over-flag."
+  },
+  "anomalous_transactions": [
+    {
+      "transaction_id": 193,
+      "vendor": "DataSync SaaS",
+      "amount": 28500.0,
+      "date": "2026-02-01",
+      "anomaly_type": "AMOUNT_OUTLIER",
+      "reason": "Amount is 5.9x vendor mean ($4,800) \u2014 only clear anomaly in SaaS",
+      "expected_zscore": 316.19,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 194,
+      "vendor": "ArunCapital Payroll",
+      "amount": 52400.0,
+      "date": "2026-06-12",
+      "anomaly_type": "OFF_SCHEDULE",
+      "reason": "Payroll paid mid-month (expected 1st or 15th)",
+      "expected_zscore": -1.0,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 195,
+      "vendor": "DataSync SaaS",
+      "amount": 4850.0,
+      "date": "2026-05-01",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate SaaS payment May 1",
+      "expected_zscore": 0.41,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 196,
+      "vendor": "DataSync SaaS",
+      "amount": 4850.0,
+      "date": "2026-05-02",
+      "anomaly_type": "DUPLICATE_TRANSACTION",
+      "reason": "Duplicate SaaS payment May 2 (pair with May 1)",
+      "expected_zscore": 0.41,
+      "is_high_impact": false
+    },
+    {
+      "transaction_id": 197,
+      "vendor": "PowerGrid Utilities",
+      "amount": 32000.0,
+      "date": "2026-07-20",
+      "anomaly_type": "HIGH_IMPACT_AMOUNT_OUTLIER",
+      "reason": "Utility charge $32,000 vs vendor mean $3422 (z-score ~58). Notable but isolated \u2014 overall data is clean.",
+      "expected_zscore": 58.48,
+      "is_high_impact": true
+    }
+  ],
+  "anomalous_transaction_ids": [
+    193,
+    194,
+    195,
+    196,
+    197
+  ],
+  "duplicate_invoices": [
+    {
+      "invoice_ids": [
+        125,
+        126
+      ],
+      "vendor": "DataSync SaaS",
+      "amount": 4800.0,
+      "invoice_date_1": "2026-03-01",
+      "invoice_date_2": "2026-03-05",
+      "gap_days": 4,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Duplicate SaaS invoice: 4-day gap"
+    },
+    {
+      "invoice_ids": [
+        127,
+        128
+      ],
+      "vendor": "CloudOps Pro",
+      "amount": 2200.0,
+      "invoice_date_1": "2026-04-01",
+      "invoice_date_2": "2026-04-06",
+      "gap_days": 5,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Duplicate cloud invoice: 5-day gap"
+    },
+    {
+      "invoice_ids": [
+        129,
+        130
+      ],
+      "vendor": "LegalEdge Partners",
+      "amount": 8500.0,
+      "invoice_date_1": "2026-02-28",
+      "invoice_date_2": "2026-03-03",
+      "gap_days": 3,
+      "issue_type": "DUPLICATE_INVOICE",
+      "reason": "Near-duplicate legal invoice: 3-day gap"
+    }
+  ],
+  "missing_po_invoices": [
+    {
+      "invoice_id": 5,
+      "vendor": "PowerGrid Utilities",
+      "amount": 2673.24,
+      "invoice_date": "2025-10-10",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    },
+    {
+      "invoice_id": 16,
+      "vendor": "PowerGrid Utilities",
+      "amount": 3043.07,
+      "invoice_date": "2025-11-10",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    },
+    {
+      "invoice_id": 27,
+      "vendor": "AquaFlow Services",
+      "amount": 968.7,
+      "invoice_date": "2025-12-10",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    },
+    {
+      "invoice_id": 43,
+      "vendor": "ContractPlus Ltd",
+      "amount": 3817.92,
+      "invoice_date": "2026-01-28",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    },
+    {
+      "invoice_id": 45,
+      "vendor": "CloudOps Pro",
+      "amount": 2433.39,
+      "invoice_date": "2026-02-01",
+      "issue_type": "MISSING_PO_REFERENCE",
+      "reason": "Invoice has no PO reference number"
+    }
+  ],
+  "vendor_stats_at_generation": {
+    "ArunCapital Payroll": {
+      "mean": 52304.63,
+      "std": 891.48,
+      "n": 24
+    },
+    "DataSync SaaS": {
+      "mean": 4819.21,
+      "std": 74.89,
+      "n": 12
+    },
+    "CloudOps Pro": {
+      "mean": 2185.59,
+      "std": 93.94,
+      "n": 12
+    },
+    "SecureVault AI": {
+      "mean": 1459.64,
+      "std": 46.4,
+      "n": 12
+    },
+    "PowerGrid Utilities": {
+      "mean": 3421.6,
+      "std": 488.7,
+      "n": 12
+    },
+    "AquaFlow Services": {
+      "mean": 845.75,
+      "std": 100.39,
+      "n": 12
+    },
+    "Broadband Express": {
+      "mean": 1201.1,
+      "std": 40.17,
+      "n": 12
+    },
+    "OfficeDepot Supplies": {
+      "mean": 685.26,
+      "std": 212.37,
+      "n": 10
+    },
+    "TechGear Solutions": {
+      "mean": 961.86,
+      "std": 226.66,
+      "n": 4
+    },
+    "FlightEasy Travel": {
+      "mean": 1897.69,
+      "std": 833.07,
+      "n": 5
+    },
+    "HotelStay Corp": {
+      "mean": 1452.5,
+      "std": 463.56,
+      "n": 6
+    },
+    "LegalEdge Partners": {
+      "mean": 8429.91,
+      "std": 1063.7,
+      "n": 11
+    },
+    "AdNova Marketing": {
+      "mean": 6939.16,
+      "std": 492.35,
+      "n": 12
+    },
+    "MaintenancePro": {
+      "mean": 2184.16,
+      "std": 773.32,
+      "n": 9
+    },
+    "ClientFirst Revenue": {
+      "mean": 102108.46,
+      "std": 5847.51,
+      "n": 12
+    },
+    "ProjectAlpha Revenue": {
+      "mean": 23863.8,
+      "std": 8639.98,
+      "n": 4
+    },
+    "RetainerB2B Inc": {
+      "mean": 15022.35,
+      "std": 405.17,
+      "n": 12
+    },
+    "ContractPlus Ltd": {
+      "mean": 3878.32,
+      "std": 245.67,
+      "n": 11
+    }
+  }
+}

@@ -1,9 +1,24 @@
 /**
- * TopNav — header bar with brand, workspace selector, search, live indicators.
+ * TopNav — header bar with brand, workspace selector, dataset switcher, live indicators.
+ * Dataset switcher: hover the Re-Analyze button to reveal neobrutalist dropdown.
  */
-import React from 'react';
+import React, { useState, useRef } from 'react';
 
-export default function TopNav({ onRunAnalysis, running }) {
+const SHADOW = '3px 3px 0px #000';
+const SHADOW_SM = '2px 2px 0px #000';
+
+export default function TopNav({
+  onRunAnalysis,
+  running,
+  datasets = [],
+  activeDataset = null,
+}) {
+  const [dropOpen, setDropOpen] = useState(false);
+  const dropRef = useRef(null);
+
+  const activeLabel = datasets.find(d => d.id === activeDataset)?.label ?? 'Default Dataset';
+  const activeDsShort = activeLabel.split(' — ')[0]; // e.g. "Dataset A"
+
   return (
     <header style={{
       height: 56,
@@ -29,7 +44,7 @@ export default function TopNav({ onRunAnalysis, running }) {
           padding: '4px 12px',
           background: '#F4F0EA',
           border: '2px solid #000',
-          boxShadow: '2px 2px 0px #000',
+          boxShadow: SHADOW_SM,
           fontFamily: 'JetBrains Mono, monospace',
           fontSize: 11, fontWeight: 700,
           cursor: 'pointer',
@@ -53,7 +68,7 @@ export default function TopNav({ onRunAnalysis, running }) {
               width: '100%',
               background: '#fff',
               border: '2px solid #000',
-              boxShadow: '3px 3px 0px #000',
+              boxShadow: SHADOW,
               padding: '6px 56px 6px 40px',
               fontFamily: 'JetBrains Mono, monospace',
               fontSize: 11, fontWeight: 500,
@@ -74,7 +89,7 @@ export default function TopNav({ onRunAnalysis, running }) {
         </div>
       </div>
 
-      {/* Right: status + re-analyze + user */}
+      {/* Right: status + dataset switcher + re-analyze + user */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
         {/* Live indicator */}
         <div style={{
@@ -82,7 +97,7 @@ export default function TopNav({ onRunAnalysis, running }) {
           padding: '4px 10px',
           background: '#fff',
           border: '2px solid #000',
-          boxShadow: '2px 2px 0px #000',
+          boxShadow: SHADOW_SM,
           fontFamily: 'JetBrains Mono, monospace',
           fontSize: 11, fontWeight: 700,
         }}>
@@ -94,34 +109,143 @@ export default function TopNav({ onRunAnalysis, running }) {
           <span>LIVE</span>
         </div>
 
-        {/* Re-analyze button */}
-        <button
-          onClick={onRunAnalysis}
-          disabled={running}
-          style={{
-            display: 'flex', alignItems: 'center', gap: 6,
-            background: running ? '#ccc' : '#FFE600',
-            border: '2px solid #000',
-            boxShadow: running ? 'none' : '3px 3px 0px #000',
-            padding: '6px 14px',
-            fontFamily: 'JetBrains Mono, monospace',
-            fontSize: 11, fontWeight: 900,
-            color: '#000',
-            cursor: running ? 'not-allowed' : 'pointer',
-          }}
+        {/* ── Dataset Switcher + Re-Analyze (grouped hover zone) ── */}
+        <div
+          ref={dropRef}
+          onMouseEnter={() => setDropOpen(true)}
+          onMouseLeave={() => setDropOpen(false)}
+          style={{ position: 'relative' }}
         >
-          <span className="material-symbols-outlined" style={{ fontSize: 16, fontWeight: 700 }}>
-            {running ? 'sync' : 'play_arrow'}
-          </span>
-          <span>{running ? 'Running...' : 'Re-Analyze'}</span>
-        </button>
+          {/* Active dataset indicator strip */}
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 0,
+          }}>
+            {/* Dataset badge (left-attached chip) */}
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: 5,
+              padding: '6px 10px',
+              background: '#F4F0EA',
+              border: '2px solid #000',
+              borderRight: 'none',
+              fontFamily: 'JetBrains Mono, monospace',
+              fontSize: 10, fontWeight: 700,
+              whiteSpace: 'nowrap',
+              boxShadow: running ? 'none' : '3px 3px 0px #000',
+              cursor: 'default',
+            }}>
+              <span className="material-symbols-outlined" style={{ fontSize: 14 }}>database</span>
+              <span>{activeDsShort}</span>
+              <span className="material-symbols-outlined" style={{ fontSize: 13 }}>
+                {dropOpen ? 'expand_less' : 'expand_more'}
+              </span>
+            </div>
+
+            {/* Re-Analyze button (right side) */}
+            <button
+              onClick={() => onRunAnalysis(activeDataset)}
+              disabled={running}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 6,
+                background: running ? '#ccc' : '#FFE600',
+                border: '2px solid #000',
+                boxShadow: running ? 'none' : '3px 3px 0px #000',
+                padding: '6px 14px',
+                fontFamily: 'JetBrains Mono, monospace',
+                fontSize: 11, fontWeight: 900,
+                color: '#000',
+                cursor: running ? 'not-allowed' : 'pointer',
+                borderRadius: 0,
+              }}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: 16, fontWeight: 700 }}>
+                {running ? 'sync' : 'play_arrow'}
+              </span>
+              <span>{running ? 'Running...' : 'Re-Analyze'}</span>
+            </button>
+          </div>
+
+          {/* ── Neobrutalist Dataset Dropdown ── */}
+          {dropOpen && datasets.length > 0 && (
+            <div style={{
+              position: 'absolute',
+              top: '100%',
+              right: 0,
+              marginTop: 4,
+              background: '#fff',
+              border: '2.5px solid #000',
+              boxShadow: '4px 4px 0px #000',
+              minWidth: 340,
+              zIndex: 200,
+            }}>
+              {/* Dropdown header */}
+              <div style={{
+                padding: '7px 14px',
+                background: '#000',
+                color: '#FFE600',
+                fontFamily: 'JetBrains Mono, monospace',
+                fontSize: 9, fontWeight: 900, letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                borderBottom: '2px solid #000',
+              }}>
+                Select Dataset — Re-Ingest + Analyze
+              </div>
+
+              {datasets.map((ds, i) => {
+                const isActive = ds.id === activeDataset;
+                return (
+                  <div
+                    key={ds.id}
+                    onClick={() => {
+                      if (!running) {
+                        setDropOpen(false);
+                        onRunAnalysis(ds.id);
+                      }
+                    }}
+                    style={{
+                      padding: '10px 14px',
+                      borderBottom: i < datasets.length - 1 ? '2px solid #000' : 'none',
+                      background: isActive ? '#FFFDE6' : '#fff',
+                      cursor: running ? 'not-allowed' : 'pointer',
+                      display: 'flex', flexDirection: 'column', gap: 3,
+                      transition: 'background 0.05s',
+                    }}
+                    onMouseEnter={e => { if (!isActive) e.currentTarget.style.background = '#F4F0EA'; }}
+                    onMouseLeave={e => { if (!isActive) e.currentTarget.style.background = '#fff'; }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      {isActive && (
+                        <span style={{
+                          fontFamily: 'JetBrains Mono, monospace',
+                          fontSize: 9, fontWeight: 900,
+                          background: '#000', color: '#FFE600',
+                          padding: '1px 6px',
+                          letterSpacing: '0.08em',
+                        }}>ACTIVE</span>
+                      )}
+                      <span style={{
+                        fontFamily: 'Space Grotesk, sans-serif',
+                        fontSize: 12, fontWeight: 800,
+                        color: '#000',
+                      }}>{ds.label}</span>
+                    </div>
+                    <span style={{
+                      fontFamily: 'JetBrains Mono, monospace',
+                      fontSize: 10, fontWeight: 500, color: '#555',
+                      lineHeight: 1.4,
+                    }}>{ds.description}</span>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
 
         {/* PROD badge */}
         <span style={{
           padding: '4px 10px',
           background: '#00E599',
           border: '2px solid #000',
-          boxShadow: '2px 2px 0px #000',
+          boxShadow: SHADOW_SM,
           fontFamily: 'JetBrains Mono, monospace',
           fontSize: 11, fontWeight: 900,
           letterSpacing: '0.08em',
@@ -132,7 +256,7 @@ export default function TopNav({ onRunAnalysis, running }) {
           width: 32, height: 32,
           background: '#FFE600',
           border: '2px solid #000',
-          boxShadow: '2px 2px 0px #000',
+          boxShadow: SHADOW_SM,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           cursor: 'pointer',
         }}>

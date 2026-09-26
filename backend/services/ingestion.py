@@ -104,15 +104,68 @@ def load_invoices(db: Session) -> int:
 
 def run_ingestion(db: Session) -> dict:
     """
-    Full idempotent ingestion pipeline:
+    Full idempotent ingestion pipeline from the default /data directory.
+    Backwards-compatible entry point; delegates to run_ingestion_from_dir.
+    """
+    return run_ingestion_from_dir(db, data_dir=DATA_DIR)
+
+
+def run_ingestion_from_dir(db: Session, data_dir: Path) -> dict:
+    """
+    Full idempotent ingestion pipeline from an explicit data directory:
     1. Clear all existing data
-    2. Load transactions from CSV
-    3. Load invoices from CSV
+    2. Load transactions from <data_dir>/transactions.csv
+    3. Load invoices from <data_dir>/invoices.csv
     Returns a summary dict suitable for API or CLI output.
     """
     cleared = clear_all_tables(db)
-    tx_count = load_transactions(db)
-    inv_count = load_invoices(db)
+
+    # Load from the specified directory
+    def _load_transactions_from(path: Path) -> int:
+        if not path.exists():
+            raise FileNotFoundError(f"transactions.csv not found at {path}")
+        rows = []
+        with open(path, newline="", encoding="latin-1") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                rows.append(Transaction(
+                    id=int(row["id"]),
+                    date=_parse_date(row["date"]),
+                    vendor=row["vendor"].strip(),
+                    category=row["category"].strip(),
+                    amount=_parse_float(row["amount"]),
+                    type=TransactionType(row["type"].strip()),
+                    status=TransactionStatus(row["status"].strip()),
+                    description=row.get("description", "").strip() or None,
+                ))
+        db.bulk_save_objects(rows)
+        db.commit()
+        return len(rows)
+
+    def _load_invoices_from(path: Path) -> int:
+        if not path.exists():
+            raise FileNotFoundError(f"invoices.csv not found at {path}")
+        rows = []
+        with open(path, newline="", encoding="latin-1") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                po_ref = row.get("po_reference", "").strip()
+                rows.append(Invoice(
+                    id=int(row["id"]),
+                    vendor=row["vendor"].strip(),
+                    amount=_parse_float(row["amount"]),
+                    invoice_date=_parse_date(row["invoice_date"]),
+                    due_date=_parse_date(row["due_date"]),
+                    status=InvoiceStatus(row["status"].strip()),
+                    po_reference=po_ref if po_ref else None,
+                ))
+        db.bulk_save_objects(rows)
+        db.commit()
+        return len(rows)
+
+    data_dir = Path(data_dir)
+    tx_count  = _load_transactions_from(data_dir / "transactions.csv")
+    inv_count = _load_invoices_from(data_dir / "invoices.csv")
 
     return {
         "status": "success",
@@ -121,8 +174,10 @@ def run_ingestion(db: Session) -> dict:
             "transactions": tx_count,
             "invoices": inv_count,
         },
+        "data_dir": str(data_dir),
         "message": (
             f"Ingested {tx_count} transactions and {inv_count} invoices from "
-            f"{DATA_DIR}. Idempotent: re-running will produce the same counts."
+            f"{data_dir}. Idempotent: re-running will produce the same counts."
         ),
     }
+
