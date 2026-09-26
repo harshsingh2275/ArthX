@@ -210,3 +210,5 @@ id,date,vendor,category,amount,type,status,description
 188,2026-09-15,FlightEasy Travel,Travel,5117.56,outflow,normal,Regular irregular payment
 192,2026-09-15,RetainerB2B Inc,Revenue,12458.75,inflow,normal,Regular monthly 15th payment
 187,2026-09-20,Broadband Express,Utilities,1637.23,outflow,normal,Regular monthly 20th payment
+10001,2026-10-02,NEW_VENDOR_B,Software,15000.0,outflow,normal,Invoice #123
+10002,2026-10-03,NEW_VENDOR_B,Software,15000.0,outflow,normal,Invoice #123
