@@ -6,6 +6,7 @@ import models  # registers all ORM models with Base.metadata
 
 # Create tables on startup if they don't exist yet
 Base.metadata.create_all(bind=engine)
+engine.dispose()
 
 app = FastAPI(
     title="ArthX Financial Intelligence Platform API",

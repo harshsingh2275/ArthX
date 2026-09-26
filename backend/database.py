@@ -19,8 +19,11 @@ elif db_url.startswith("sqlite:///") and not db_url.startswith("sqlite:////"):
     raw_path = db_url.replace("sqlite:///", "")
     Path(raw_path).parent.mkdir(parents=True, exist_ok=True)
 
+from sqlalchemy.pool import NullPool
+
 engine = create_engine(
     db_url,
+    poolclass=NullPool if "sqlite" in db_url else None,
     connect_args={"check_same_thread": False} if "sqlite" in db_url else {}
 )
 

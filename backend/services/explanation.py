@@ -70,34 +70,40 @@ def explain_anomalies(db: Session, overwrite: bool = True) -> Dict[str, Any]:
     skipped = 0
     failed = 0
 
+    to_explain = []
     for anomaly in anomalies:
         if not overwrite and anomaly.explanation:
             skipped += 1
-            continue
+        else:
+            to_explain.append(anomaly)
 
-        input_dict = _anomaly_to_input_dict(anomaly)
-        try:
-            explanation = generate_explanation(input_dict)
-            if not explanation:
-                raise ValueError("generate_explanation returned empty string")
+    if to_explain:
+        import concurrent.futures
+
+        def _generate_single(anomaly: Anomaly):
+            input_dict = _anomaly_to_input_dict(anomaly)
+            try:
+                explanation = generate_explanation(input_dict)
+                if not explanation:
+                    raise ValueError("generate_explanation returned empty string")
+                return anomaly, explanation, True
+            except Exception as exc:
+                logger.error("Failed to explain anomaly %d: %s", anomaly.id, exc)
+                fallback = (
+                    f"Transaction flagged for {anomaly.reason_code}: "
+                    f"{anomaly.trigger_metric} (vendor: {anomaly.vendor})."
+                )
+                return anomaly, fallback, False
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+            results = list(executor.map(_generate_single, to_explain))
+
+        for anomaly, explanation, success in results:
             anomaly.explanation = explanation
-            explained += 1
-            logger.info(
-                "Anomaly %d (tx %d, %s): explanation generated.",
-                anomaly.id,
-                anomaly.transaction_id,
-                anomaly.vendor,
-            )
-        except Exception as exc:
-            logger.error(
-                "Failed to explain anomaly %d: %s", anomaly.id, exc
-            )
-            # Store a minimal fallback so the column is never NULL/blank
-            anomaly.explanation = (
-                f"Transaction flagged for {anomaly.reason_code}: "
-                f"{anomaly.trigger_metric} (vendor: {anomaly.vendor})."
-            )
-            failed += 1
+            if success:
+                explained += 1
+            else:
+                failed += 1
 
     db.commit()
     return {
