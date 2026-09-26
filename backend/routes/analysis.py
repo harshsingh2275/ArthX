@@ -1,46 +1,70 @@
 """
-ArthX Analysis Routes — T2.1 / T2.3
+ArthX Analysis Routes — T2.1 / T2.3 / T3.1
 Exposes:
-  POST /api/analysis/run      — anomaly detection
-  GET  /api/analysis/anomalies — list stored anomalies
-  POST /api/analysis/explain  — generate/update LLM explanations (T2.3)
+  POST /api/analysis/run       — Unified pipeline: detection, invoices, forecast, impact linking, explainability
+  GET  /api/analysis/anomalies — List persisted anomalies
+  GET  /api/anomalies          — List persisted anomalies (T3.2 specification alias)
+  POST /api/analysis/explain   — Regenerate LLM explanations
 """
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from database import get_db
-from services.analysis import run_analysis, get_stored_anomalies
+from services.analysis import get_stored_anomalies
 from services.explanation import run_explanation_pipeline
+from services.orchestrator import run_orchestrated_pipeline
 
-router = APIRouter(prefix="/api/analysis", tags=["analysis"])
+router = APIRouter(tags=["analysis"])
 
 
-@router.post("/run")
-def run_analysis_endpoint(db: Session = Depends(get_db)):
+@router.post("/api/analysis/run")
+def run_analysis_endpoint(
+    run_explainer: bool = Query(
+        default=True,
+        description="Whether to run LLM explainability generation for results",
+    ),
+    horizon_days: int = Query(
+        default=30,
+        ge=7,
+        le=90,
+        description="Cash flow forecast horizon in days",
+    ),
+    db: Session = Depends(get_db),
+):
     """
-    Run the anomaly detection engine against the current database state.
-    Idempotent: clears previous results, resets transaction statuses, and
-    recomputes everything fresh. Returns the full set of detected anomalies
-    and a summary.
+    T3.1 — Master pipeline orchestration endpoint:
+      1. Anomaly & fraud detection (T2.1)
+      2. Invoice validation (T2.4)
+      3. Cash flow forecasting (T2.2)
+      4. Forecast impact linking (T2.5)
+      5. Grounded explainability generation (T2.3)
+
+    Persists all computed outputs to the database.
+    Subsequent GET queries to dashboard endpoints return instantaneously (<1s).
     """
     try:
-        result = run_analysis(db)
+        result = run_orchestrated_pipeline(
+            db=db,
+            run_explainer=run_explainer,
+            horizon_days=horizon_days,
+        )
         return result
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Analysis failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Orchestration pipeline failed: {str(e)}")
 
 
-@router.get("/anomalies")
+@router.get("/api/analysis/anomalies")
+@router.get("/api/anomalies")
 def list_anomalies(db: Session = Depends(get_db)):
     """
-    Return the persisted anomaly records from the last analysis run,
-    ordered by risk_score descending.
+    T3.2 — Return persisted anomaly records from the DB, ordered by risk_score descending.
+    Includes explanation and impact_on_30d_forecast.
     """
     return get_stored_anomalies(db)
 
 
-@router.post("/explain")
+@router.post("/api/analysis/explain")
 def run_explain_endpoint(
     overwrite: bool = Query(
         default=True,
@@ -49,13 +73,7 @@ def run_explain_endpoint(
     db: Session = Depends(get_db),
 ):
     """
-    T2.3 — Generate LLM-powered explanations for all stored anomalies and the
-    current forecast, then persist them to the DB.
-
-    - Updates anomalies.explanation for every row in the anomalies table.
-    - Updates forecasts.trend_summary for every row in the forecasts table.
-    - Idempotent when overwrite=false (skips already-explained rows).
-    - Falls back to a deterministic template if the Gemini API is unavailable.
+    T2.3 — Standalone trigger for generating LLM explanations.
     """
     try:
         result = run_explanation_pipeline(db, overwrite=overwrite)

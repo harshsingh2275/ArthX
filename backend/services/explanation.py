@@ -37,7 +37,7 @@ def _anomaly_to_input_dict(anomaly: Anomaly) -> Dict[str, Any]:
     Build the structured-JSON dict that is passed to generate_explanation().
     Matches the T2.1 anomaly output contract — only real field values, no invented data.
     """
-    return {
+    data = {
         "transaction_id": anomaly.transaction_id,
         "vendor": anomaly.vendor,
         "amount": anomaly.amount,
@@ -45,6 +45,9 @@ def _anomaly_to_input_dict(anomaly: Anomaly) -> Dict[str, Any]:
         "reason_code": anomaly.reason_code,
         "trigger_metric": anomaly.trigger_metric,
     }
+    if anomaly.impact_on_30d_forecast is not None:
+        data["impact_on_30d_forecast"] = anomaly.impact_on_30d_forecast
+    return data
 
 
 def explain_anomalies(db: Session, overwrite: bool = True) -> Dict[str, Any]:

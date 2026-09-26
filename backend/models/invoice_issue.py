@@ -23,3 +23,12 @@ class InvoiceIssue(Base):
             "detail": self.detail,
             "created_at": self.created_at.isoformat() if self.created_at else None,
         }
+
+    def to_contract(self):
+        return {
+            "invoice_id": self.invoice_id,
+            "issue_type": self.issue_type,
+            "detail": self.detail,
+            "vendor": self.vendor,
+            "amount": self.amount,
+        }
